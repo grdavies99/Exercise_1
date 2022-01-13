@@ -1,6 +1,7 @@
+text = input("Enter name of text file: ")
+print(text)
 
-
-with open('gettysburg.txt') as f:
+with open(text) as f:
     data = f.read().strip()
 
 # print(data.replace(" ",""))
@@ -54,9 +55,13 @@ def CountLowercase(info):
             Lower += 1
     return Lower
     
-
-print("numbers: " + str(CountNumbers(data)) )
-print("Consonants: " + str(CountConsonants(data)))
+print("Statistics for " + text + ":\n")
+print("Characters: " + str(len(data)))
+print("Upper case: "+ str(CountUperrcase(data)))
+print("Lower case: "+ str(CountLowercase(data)))
+print("Digits: " + str(CountNumbers(data)) )
+print("White spaces: " + str(data.count(" ")))
 print("Vowels: " + str(CountVowels(data)))
-print("Uppercase Letters: "+ str(CountUperrcase(data)))
-print("Lowercase Letters: "+ str(CountLowercase(data)))
+print("Consonants: " + str(CountConsonants(data)))
+print("Sentences: " + str(data.count(".")))
+print("Average words per sentence: " + str(len(data.split(" "))/data.count(".")))
