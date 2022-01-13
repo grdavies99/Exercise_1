@@ -1,10 +1,9 @@
 text = input("Enter name of text file: ")
-print(text)
+
+
 
 with open(text) as f:
     data = f.read().strip()
-
-# print(data.replace(" ",""))
 
 def CountConsonants(info):
     cons = 0
@@ -54,8 +53,14 @@ def CountLowercase(info):
         if char.islower():
             Lower += 1
     return Lower
-    
-print("Statistics for " + text + ":\n")
+
+def RemoveBreaks(info):
+    info = info.replace("\n", " ")
+    return info    
+
+# print(len(RemoveBreaks(data).split(" ")))
+
+print("\nStatistics for " + text + ":\n")
 print("Characters: " + str(len(data)))
 print("Upper case: "+ str(CountUperrcase(data)))
 print("Lower case: "+ str(CountLowercase(data)))
@@ -64,4 +69,4 @@ print("White spaces: " + str(data.count(" ")))
 print("Vowels: " + str(CountVowels(data)))
 print("Consonants: " + str(CountConsonants(data)))
 print("Sentences: " + str(data.count(".")))
-print("Average words per sentence: " + str(len(data.split(" "))/data.count(".")))
+print("Average words per sentence: " + str(round(len(RemoveBreaks(data).split(" "))/data.count("."),1)))
